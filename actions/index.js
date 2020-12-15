@@ -1,4 +1,5 @@
 import { getDecks } from '../utils/api';
+import { decks }  from '../utils/_DATA';
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
@@ -37,7 +38,8 @@ export function receiveDecks(decks) {
   
   export function resetData() {
     return {
-      type: RESET_DATA
+      type: RESET_DATA,
+      decks
     };
   }
   
