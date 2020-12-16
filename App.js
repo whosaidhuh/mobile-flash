@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import reducer from './reducers/index';
 import { getDecks } from './utils/api';
+
+
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default function App() {
 
@@ -16,10 +24,12 @@ export default function App() {
   });
 
   return (
-    <View style={styles.container}>
-      <Text>{JSON.stringify(data)}</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Text>{JSON.stringify(data)}</Text>
+        <StatusBar style="auto" />
+      </View>
+    </Provider>
   );
 }
 
