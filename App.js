@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers/index';
 import { getDecks } from './utils/api';
+import DeckList from './components/DeckList';
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -26,7 +27,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <Text>{JSON.stringify(data)}</Text>
+          <DeckList />
         <StatusBar style="auto" />
       </View>
     </Provider>
