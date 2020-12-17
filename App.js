@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers/index';
 import { getDecks } from './utils/api';
+import AddDeck from './components/AddDeck';
 import DeckList from './components/DeckList';
 
 
@@ -28,6 +29,7 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.container}>
           <DeckList />
+          <AddDeck />
         <StatusBar style="auto" />
       </View>
     </Provider>
