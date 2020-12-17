@@ -10,6 +10,7 @@ import { getDecks } from './utils/api';
 import AddDeck from './components/AddDeck';
 import DeckList from './components/DeckList';
 import DeckInfo from './components/DeckInfo';
+import AddCard from './components/AddCard';
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -29,7 +30,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-         <DeckInfo />
+         <AddCard />
         <StatusBar style="auto" />
       </View>
     </Provider>
