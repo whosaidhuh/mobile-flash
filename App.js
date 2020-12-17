@@ -9,6 +9,7 @@ import reducer from './reducers/index';
 import { getDecks } from './utils/api';
 import AddDeck from './components/AddDeck';
 import DeckList from './components/DeckList';
+import DeckInfo from './components/DeckInfo';
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -28,8 +29,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-          <DeckList />
-          <AddDeck />
+         <DeckInfo />
         <StatusBar style="auto" />
       </View>
     </Provider>
