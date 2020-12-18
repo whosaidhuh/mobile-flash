@@ -17,20 +17,10 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default function App() {
 
-  const [data, setData]= useState('');
-
-  useEffect(() => {
-    getDecks().then(result => {
-      setData(() => ({
-        result
-      }));
-    });
-  });
-
   return (
     <Provider store={store}>
       <View style={styles.container}>
-         <AddCard />
+         <DeckList />
         <StatusBar style="auto" />
       </View>
     </Provider>

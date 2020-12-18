@@ -1,14 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Deck = () => {
+function Deck(props){
+
+  const { deck } = props;
+  console.log(deck)
+
   return (
     <View style={styles.deckContainer}>
       <View>
-        <Text style={styles.deckText}>Deck 1</Text>
+        <Text style={styles.deckText}>{deck.title}</Text>
       </View>
       <View>
-        <Text style={styles.cardText}>3 cards</Text>
+        <Text style={styles.cardText}>{deck.cards.length} cards</Text>
       </View>
     </View>
   );

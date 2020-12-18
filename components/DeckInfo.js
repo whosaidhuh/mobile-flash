@@ -4,9 +4,12 @@ import Deck from './Deck';
 
 class DeckInfo extends Component {
   render() {
+
+    const { deck } = this.props;
+
     return (
       <View style={styles.container}>
-        <Deck />
+        <Deck  deck={deck }/>
         <View>
             <TouchableOpacity style={[styles.addCard, styles.btn]}>
                     <Text style={styles.btnText}>Add Card</Text>
