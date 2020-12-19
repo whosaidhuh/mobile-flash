@@ -5,14 +5,21 @@ import Deck from './Deck';
 class DeckInfo extends Component {
   render() {
 
-    const { deck } = this.props;
+    const { navigation } = this.props;
+    const { cards, title }= this.props.route.params;
 
     return (
       <View style={styles.container}>
-        <Deck  deck={deck }/>
         <View>
-            <TouchableOpacity style={[styles.addCard, styles.btn]}>
-                    <Text style={styles.btnText}>Add Card</Text>
+              <Text>{title}</Text>
+              <Text>Total number of cards: {cards.length} </Text>
+            <TouchableOpacity 
+            style={[styles.addCard, styles.btn]}
+            onPress={() =>
+              navigation.navigate('Add Card', { title: title })
+            }
+            >
+              <Text style={styles.btnText}>Add Card</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.startQuiz, styles.btn]}>
                     <Text style={styles.btnText}>Start Quiz</Text>

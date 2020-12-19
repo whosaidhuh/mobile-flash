@@ -1,16 +1,13 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers/index';
-import { getDecks } from './utils/api';
-import AddDeck from './components/AddDeck';
-import DeckList from './components/DeckList';
-import DeckInfo from './components/DeckInfo';
-import AddCard from './components/AddCard';
+import QuizStackNavigator from './navigation/QuizStackNavigator'
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -19,10 +16,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-         <DeckList />
-        <StatusBar style="auto" />
-      </View>
+      <QuizStackNavigator/>
     </Provider>
   );
 }

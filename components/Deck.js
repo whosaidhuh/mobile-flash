@@ -3,16 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 function Deck(props){
 
-  const { deck } = props;
-  console.log(deck)
-
+  const { cards, id } = props;
   return (
     <View style={styles.deckContainer}>
       <View>
-        <Text style={styles.deckText}>{deck.title}</Text>
+        <Text style={styles.deckText}>{id}</Text>
       </View>
       <View>
-        <Text style={styles.cardText}>{deck.cards.length} cards</Text>
+        <Text style={styles.cardText}>{cards.length} cards</Text>
       </View>
     </View>
   );

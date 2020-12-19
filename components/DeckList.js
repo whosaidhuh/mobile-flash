@@ -4,13 +4,14 @@ import Deck from './Deck';
 import { handleInitialData } from '../actions/index';
 import { connect } from 'react-redux';
 
+
 function DeckList(props) {
 
   useEffect(() => {
     props.dispatch(handleInitialData());
   },[]);
 
-  const { decks } = props;
+  const { decks, navigation } = props;
   console.log(decks)
 
     return (
@@ -19,8 +20,17 @@ function DeckList(props) {
         return (
           <TouchableOpacity
             key={deck.title}
+            onPress={() => 
+              navigation.navigate('Deck Info', { 
+                title: deck.title,
+                cards: deck.cards
+              })
+            }
             >
-            <Deck deck={deck} />
+            <Deck 
+            id={deck.title}
+            cards={deck.cards} 
+            />
           </TouchableOpacity>
           );
         })}
