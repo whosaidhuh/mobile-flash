@@ -21,8 +21,16 @@ class DeckInfo extends Component {
             >
               <Text style={styles.btnText}>Add Card</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.startQuiz, styles.btn]}>
-                    <Text style={styles.btnText}>Start Quiz</Text>
+            <TouchableOpacity 
+            style={[styles.startQuiz, styles.btn]}
+            onPress={() =>
+              navigation.navigate('Start Quiz', { 
+                title: title, 
+                cards: cards
+              })
+            }
+            >
+              <Text style={styles.btnText}>Start Quiz</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.deleteDeck, styles.btn]}>
                     <Text style={styles.btnText}>Delete Deck</Text>
