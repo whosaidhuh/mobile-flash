@@ -10,12 +10,10 @@ const QuizStack = createStackNavigator();
 
 export default function QuizStackNavigator() {
     return (
-    <NavigationContainer>
         <QuizStack.Navigator>
             <QuizStack.Screen name="Deck List" component={DeckList} />
             <QuizStack.Screen name="Deck Info" component={DeckInfo} />
             <QuizStack.Screen name="Add Card" component={AddCard} />
         </QuizStack.Navigator>
-    </NavigationContainer>
     );
   }

@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './reducers/index';
-import QuizStackNavigator from './navigation/QuizStackNavigator'
+import TabNavigator from './navigation/TabNavigator'
 
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <QuizStackNavigator/>
+      <TabNavigator/>
     </Provider>
   );
 }
