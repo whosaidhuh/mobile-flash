@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Text, TouchableOpacity, View, ScrollView, StyleSheet } from 'react-native';
 import { connect } from "react-redux";
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 function Quiz(props) {
  
@@ -10,6 +11,10 @@ function Quiz(props) {
 
   const { navigation } = props;
   const { cards, title }= props.route.params;
+
+  useEffect(() => {
+    clearLocalNotification().then(setLocalNotification);
+  },[]);
  
   useEffect(() => {
     if (score > 0)
