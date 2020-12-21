@@ -35,7 +35,7 @@ export function receiveDecks(decks) {
     };
   }
   
-  export function resetData() {
+  export function resetData(decks) {
     return {
       type: RESET_DATA,
       decks

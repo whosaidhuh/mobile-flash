@@ -15,7 +15,7 @@ export const decks = {
             answer: 'An insect'
           },
           {
-            question: `What is the novel Frankenstein’s alternative name?`,
+            question: `What is the novel "Frankenstein’s" alternative name?`,
             answer: 'The Modern Prometheus'
           },
       ]
@@ -34,7 +34,7 @@ export const decks = {
               'Kit'
           },
           {
-            question: 'An ant warn other ants of danger ahead by doing what?',
+            question: 'An ant warns other ants of danger ahead by doing what?',
             answer:
             'Sending chemical signals'
           }
