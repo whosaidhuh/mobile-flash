@@ -12,7 +12,6 @@ function DeckList(props) {
   },[]);
 
   const { decks, navigation } = props;
-  console.log(decks)
 
     return (
       <View>
