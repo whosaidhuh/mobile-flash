@@ -5,7 +5,7 @@ function Deck(props){
 
   const { cards, id } = props;
   return (
-    <View style={styles.deckContainer}>
+    <View style={styles.container}>
       <View>
         <Text style={styles.deckText}>{id}</Text>
       </View>
@@ -17,17 +17,24 @@ function Deck(props){
 };
 
 const styles = StyleSheet.create({
-  deckContainer: {
+  container: {
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: 'yellow',
-  },
+    justifyContent: 'center',
+    flexBasis: 120,
+    minHeight: 120,
+    borderWidth: 1,
+    borderColor: '#aaa',
+    backgroundColor: "white",
+    borderRadius: 5,
+    marginBottom: 10
+},
+
   deckText: {
     fontSize: 24
   },
   cardText: {
     fontSize: 18,
-    color: 'cyan'
+    color: 'grey'
   }
 });
 
