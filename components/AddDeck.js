@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
   Text,
-  View,
-  StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet,
+  View,
 } from 'react-native';
+import { addDeck } from '../actions/index';
 
 class AddDeck extends Component {
 
@@ -15,20 +17,37 @@ class AddDeck extends Component {
   handleChange = text => {
     this.setState({ text });
   };
+
+  handleSubmit =()=>{
+  const title = this.state.text.trim()
+  this.props.dispatch(addDeck(title))
+  this.setState({text:""})
+  this.props.navigation.navigate('Deck Info', { 
+    title: title, 
+    cards: [] 
+  })
+  }
+
   render() {
+
+    const { text, value } = this.state;
+
     return (
         <View style={styles.container}>
           <Text style={styles.title}>Add a new deck</Text>
             <View>
-            <TextInput
-                placeholder="What is the title of your new deck?"
-                style={styles.input}
-                value={this.state.value}
-                onChangeText={this.handleChange}
-            />
-            <TouchableOpacity style={styles.btn}>
-                <Text style={styles.btnText}>Create Deck</Text>
-            </TouchableOpacity>
+              <TextInput
+                  placeholder="What is the title of your new deck?"
+                  style={styles.input}
+                  value={value}
+                  onChangeText={this.handleChange}
+              />
+              <TouchableOpacity
+              disabled={text.trim()===""}
+              onPress={this.handleSubmit}
+              style={text.trim()==="" ? styles.disabled : styles.btn}>
+                  <Text style={styles.btnText}>Create Deck</Text>
+              </TouchableOpacity>
             </View>
       </View>
     );
@@ -57,6 +76,18 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: '#DCDCDC',
     },
+
+    disabled: {
+      marginTop: 20,
+      width: 300,
+      height: 40,
+      paddingHorizontal: 10,
+      borderRadius: 10,
+      backgroundColor: 'grey',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
     btn: {
         marginTop: 20,
         width: 300,
@@ -74,4 +105,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddDeck;
+export default connect()(AddDeck);

@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, View, TextInput, StyleSheet } from 'react-native';
+import {connect} from 'react-redux'
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+} from 'react-native';
+import { addCardToDeck } from '../actions/index'
 
 class AddCard extends Component {
 
@@ -11,9 +19,21 @@ class AddCard extends Component {
   handleQuestionChange = question => {
     this.setState({ question });
   };
+
   handleAnswerChange = answer => {
     this.setState({ answer });
   };
+
+  handleAddCard = () => {
+    const {title} = this.props.route.params
+    const { navigation } = this.props
+    const {question, answer} = this.state
+
+    this.props.dispatch(addCardToDeck(title, {question, answer}))
+    this.setState({question:"", answer:""})
+    navigation.navigate('Deck List')
+  }
+
   render() {
 
     const {question, answer} = this.state
@@ -33,7 +53,10 @@ class AddCard extends Component {
               onChangeText={this.handleAnswerChange}
               placeholder="Enter answer"
             />
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity
+            disabled={question.trim()==="" || answer.trim()===""} 
+            onPress={this.handleAddCard}
+            style={question.trim()==="" || answer.trim()==="" ? styles.disabled : styles.btn}>
                 <Text style={styles.btnText}>Add</Text>
             </TouchableOpacity>
       </View>
@@ -64,6 +87,18 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         backgroundColor: '#DCDCDC',
     },
+
+    disabled: {
+      marginTop: 20,
+      width: 300,
+      height: 40,
+      paddingHorizontal: 10,
+      borderRadius: 10,
+      backgroundColor: 'grey',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    
     btn: {
         marginTop: 20,
         width: 300,
@@ -81,4 +116,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddCard;
+export default connect()(AddCard);

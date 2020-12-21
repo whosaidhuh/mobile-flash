@@ -10,19 +10,10 @@ class DeckInfo extends Component {
 
     return (
       <View style={styles.container}>
-        <View>
-              <Text>{title}</Text>
-              <Text>Total number of cards: {cards.length} </Text>
-            <TouchableOpacity 
-            style={[styles.addCard, styles.btn]}
-            onPress={() =>
-              navigation.navigate('Add Card', { title: title })
-            }
-            >
-              <Text style={styles.btnText}>Add Card</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-            style={[styles.startQuiz, styles.btn]}
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.block}>Total number of cards: {cards.length} </Text>
+              <TouchableOpacity 
+            style={styles.btn}
             onPress={() =>
               navigation.navigate('Start Quiz', { 
                 title: title, 
@@ -32,10 +23,14 @@ class DeckInfo extends Component {
             >
               <Text style={styles.btnText}>Start Quiz</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.deleteDeck, styles.btn]}>
-                    <Text style={styles.btnText}>Delete Deck</Text>
+            <TouchableOpacity 
+            style={styles.btn}
+            onPress={() =>
+              navigation.navigate('Add Card', { title: title })
+            }
+            >
+              <Text style={styles.btnText}>Add Card</Text>
             </TouchableOpacity>
-        </View>
       </View>
     );
   }
@@ -49,34 +44,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 40,
     },
+    
+    block: {
+      margin: 20
+    },
 
     btn: {
         marginTop: 20,
         width: 300,
         height: 40,
         paddingHorizontal: 10,
+        backgroundColor: '#009688',
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
 
-    addCard: {
-        backgroundColor: '#19d467',
-        
-    },
-
-    startQuiz: {
-        backgroundColor: '#afd119',
-    },
-
-    deleteDeck: {
-        backgroundColor: '#b83773',
-    },
-
     btnText: {
         fontSize: 18,
         color: '#fff'
-    }
+    },
+
+    title: {
+      fontSize: 32,
+      alignItems: 'center',
+      margin: 20
+    },
 });
 
 export default DeckInfo;

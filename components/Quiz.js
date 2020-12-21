@@ -36,6 +36,7 @@ function Quiz(props) {
   }
 
   return(
+    <ScrollView>
         <View style={styles.container}>
             <View>
                 <Text style={styles.title}>{title}</Text>
@@ -77,6 +78,7 @@ function Quiz(props) {
               </TouchableOpacity>
           </View>
         </View>
+      </ScrollView>
   )
 } 
 
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
 
   showBtn: {
       margin: 20,
-      width: 200,
+      width: 100,
       height: 40,
       alignItems: 'center',
       justifyContent: 'center',
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   },
   btn: {
       margin: 20,
-      width: 200,
+      width: 100,
       height: 40,
       paddingHorizontal: 10,
       borderRadius: 10,

@@ -5,7 +5,7 @@ class Result extends Component {
   render() {
 
     const {cards, score, title} = this.props.route.params
-    const correctPercent= ((score/cards.length)*100).toPrecision(2)
+    const correctPercent= ((score/cards.length)*100).toFixed(1)
 
     return (
       <View style={styles.container}>
@@ -18,12 +18,12 @@ class Result extends Component {
             <TouchableOpacity 
               onPress={e=>this.props.navigation.push('Start Quiz', {cards, score, title})}
               style={styles.btn}>
-            <Text style={styles.btnText}>Restart</Text>
+            <Text style={styles.btnText}>Restart Quiz</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-              onPress={e=>this.props.navigation.push('Deck List')}
+              onPress={e=>this.props.navigation.push('Deck Info', {cards, title})}
               style={styles.btn}>
-            <Text style={styles.btnText}>Home</Text>
+            <Text style={styles.btnText}>Back to Deck</Text>
             </TouchableOpacity>
             </View>
       </View>
