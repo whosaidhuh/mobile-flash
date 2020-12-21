@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { removeDeck } from '../actions/index';
 
 class DeckInfo extends Component {
+  
+  handleDeleteDeck = (id) => {
+    this.props.dispatch(removeDeck(id));
+    this.props.navigation.goBack();
+  };
+  
   render() {
 
     const { navigation } = this.props;
     const { cards, title }= this.props.route.params;
-    console.log(cards.length)
 
     return (
       <View style={styles.container}>
@@ -31,6 +38,13 @@ class DeckInfo extends Component {
             }
             >
               <Text style={styles.btnText}>Add Card</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            style={styles.btn}
+            onPress={() =>
+              this.handleDeleteDeck(title)}
+            >
+              <Text style={styles.btnText}>Delete Deck</Text>
             </TouchableOpacity>
       </View>
     );
@@ -84,4 +98,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DeckInfo;
+export default connect()(DeckInfo);
