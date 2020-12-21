@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import {Text, TouchableOpacity, View, StyleSheet } from 'react-native';
-import Deck from './Deck';
 
 class DeckInfo extends Component {
   render() {
 
     const { navigation } = this.props;
     const { cards, title }= this.props.route.params;
+    console.log(cards.length)
 
     return (
       <View style={styles.container}>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.block}>Total number of cards: {cards.length} </Text>
               <TouchableOpacity 
-            style={styles.btn}
-            onPress={() =>
-              navigation.navigate('Start Quiz', { 
-                title: title, 
-                cards: cards
-              })
-            }
+                style={cards.length ==- 0 ? styles.disabled : styles.btn}
+                disabled={cards.length ==- 0}
+                onPress={() =>
+                  navigation.navigate('Start Quiz', { 
+                    title: title, 
+                    cards: cards
+                  })
+                }
             >
               <Text style={styles.btnText}>Start Quiz</Text>
             </TouchableOpacity>
@@ -47,6 +48,17 @@ const styles = StyleSheet.create({
     
     block: {
       margin: 20
+    },
+
+    disabled: {
+      marginTop: 20,
+      width: 300,
+      height: 40,
+      paddingHorizontal: 10,
+      borderRadius: 10,
+      backgroundColor: 'grey',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
 
     btn: {
