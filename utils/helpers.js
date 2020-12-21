@@ -31,16 +31,16 @@ export function clearLocalNotification() {
                   })
 
                   let tomorrow = new Date()
-                  tomorrow = tomorrow.getTime() + (1000*10);
-                  let notificationDate = new Date(tomorrow)
-                  console.log('date', notificationDate);
+                  tomorrow.setDate(tomorrow.getDate() + 1)
+                  tomorrow.setHours(9)
+                  tomorrow.setMinutes(0)
 
                   Notifications.scheduleNotificationAsync({
                     content: {
                       title: 'Mobile Flashcards Reminder',
                       body: "👋 Don't forget to quiz yourself today!",
                     },
-                    trigger: notificationDate
+                    trigger: tomorrow
                   });
   
                   AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
