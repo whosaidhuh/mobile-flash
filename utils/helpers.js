@@ -30,17 +30,14 @@ export function clearLocalNotification() {
                     })
                   })
 
-                  let tomorrow = new Date()
-                  tomorrow.setDate(tomorrow.getDate() + 1)
-                  tomorrow.setHours(9)
-                  tomorrow.setMinutes(0)
-
                   Notifications.scheduleNotificationAsync({
                     content: {
                       title: 'Mobile Flashcards Reminder',
                       body: "👋 Don't forget to quiz yourself today!",
                     },
-                    trigger: tomorrow
+                    trigger: { 
+                      hour: 17, minute: 10, repeats: true 
+                  }
                   });
   
                   AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));

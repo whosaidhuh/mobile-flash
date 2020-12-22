@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import {Text, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
 import { removeDeck } from '../actions/index';
 
 class DeckInfo extends Component {
@@ -16,12 +16,12 @@ class DeckInfo extends Component {
     const { cards, title }= this.props.route.params;
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.block}>Total number of cards: {cards.length} </Text>
               <TouchableOpacity 
-                style={cards.length ==- 0 ? styles.disabled : styles.btn}
-                disabled={cards.length ==- 0}
+                style={cards.length === 0 ? styles.disabled : styles.btn}
+                disabled={cards.length === 0}
                 onPress={() =>
                   navigation.navigate('Start Quiz', { 
                     title: title, 
@@ -46,7 +46,7 @@ class DeckInfo extends Component {
             >
               <Text style={styles.btnText}>Delete Deck</Text>
             </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     );
   }
 }

@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class Result extends Component {
+
+
+  componentDidMount(){    
+    clearLocalNotification().then(setLocalNotification);
+  }
+
   render() {
 
     const {cards, score, title} = this.props.route.params

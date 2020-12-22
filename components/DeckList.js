@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import Deck from './Deck';
 import { handleInitialData } from '../actions/index';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ function DeckList(props) {
   const { decks, navigation } = props;
 
     return (
-      <View>
+      <ScrollView>
         {Object.values(decks).map(deck => {
         return (
           <TouchableOpacity
@@ -33,7 +33,7 @@ function DeckList(props) {
           </TouchableOpacity>
           );
         })}
-      </View>
+      </ScrollView>
     );
   }
 
