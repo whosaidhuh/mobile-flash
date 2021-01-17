@@ -33,3 +33,18 @@ This project has been tested on the following platforms:
 
 - iOS 13+
 - Android 10+.
+
+## Adding spritz view on top notecards
+https://github.com/vicrazumov/React.Spritz
+
+Installation
+npm install react-spritz --save
+Include the stylesheet as follows if needed:
+
+import '../node_modules/react-spritz/build/main.css';
+Usage
+<ReactSpritz
+  text="Hi, this is React Spritz. Let's play!"
+  wpm={400}
+  playing
+/>
