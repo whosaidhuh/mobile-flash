@@ -4,6 +4,7 @@ import { decks } from './_DATA';
 const DECKS_STORAGE_KEY = 'mobileflashcards:decks';
 
 export async function getDecks() {
+  AsyncStorage.clear()
     //getDecks: return all of the decks along with their titles, questions, and answers.
   try {
       /*fetch decks data or return null otherwise.

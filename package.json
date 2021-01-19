@@ -24,10 +24,11 @@
     "react-native-gesture-handler": "~1.8.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "2.16.1",
+    "react-native-screens": "~2.15.0",
     "react-native-unimodules": "~0.12.0",
     "react-native-web": "0.11.7",
     "react-redux": "^7.2.2",
+    "react-spritz": "^0.2.5",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"

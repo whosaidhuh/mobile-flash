@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import { Text, TouchableOpacity, View, ScrollView, StyleSheet } from 'react-native';
 import { connect } from "react-redux";
+/*import '../node_modules/react-spritz/build/main.css';*/
+import '../utils/main.css';
+
+import ReactSpritz from 'react-spritz';
 
 function Quiz(props) {
  
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [showQuestion, setShowQuestion] = useState(false);
 
   const { navigation } = props;
   const { cards, title }= props.route.params;
 
- 
   useEffect(() => {
     if (score > 0)
     handleClick();
@@ -35,35 +39,51 @@ function Quiz(props) {
   const toggleAnswer = () => {
     setShowAnswer(!showAnswer)
   }
-
+    const toggleQuestion = () => {
+        setShowQuestion(!showQuestion)
+    }
   return(
     <ScrollView>
-        <View style={styles.container}>
+        <View style={styles.container2}>
             <View>
                 <Text style={styles.title}>{title}</Text>
                 <Text>Question {questionIndex + 1} out of {cards.length} </Text>
                 <Text>Score {score} </Text>
-
             </View>
-                <View style={styles.block}>
-                <Text style={styles.quiz}>{cards[questionIndex].question}</Text>
-                </View>
-            {
-            showAnswer && (
-                <View style={styles.block}>
-                <Text style={styles.quiz}>{cards[questionIndex].answer}</Text>
-                </View>
+        {
+            showQuestion && (
+            <View style={styles.block}>
+            <ReactSpritz style={styles.container}
+                text={cards[questionIndex].question.concat(" ").repeat(100)}
+                wpm={500}
+                playing
+            />
+            </View>
           )}
+            <View>
+                <TouchableOpacity
+                    onPress={toggleQuestion}
+                    style={styles.showBtn}
+                ><Text>{showQuestion? "Hide Question":" Show Question"}</Text>
+                </TouchableOpacity>
+            </View>
+            {
+                showAnswer && (
+                    <View style={styles.block}>
+                        <Text style={styles.quiz}>{cards[questionIndex].answer}</Text>
+                    </View>
+                )}
 
 
             <View>
-              <TouchableOpacity 
-              onPress={toggleAnswer} 
-              style={styles.showBtn}
-              >
-                  <Text>{showAnswer? "Hide Answer":" Show Answer"}</Text>
-              </TouchableOpacity>
-              </View>
+                <TouchableOpacity
+                    onPress={toggleAnswer}
+                    style={styles.showBtn}
+                >
+                    <Text>{showAnswer? "Hide Answer":" Show Answer"}</Text>
+                </TouchableOpacity>
+            </View>
+
             <View style={styles.buttonSection}>
               <TouchableOpacity 
               onPress={() => 
@@ -84,8 +104,14 @@ function Quiz(props) {
 } 
 
 const styles = StyleSheet.create({
-
-  container: {
+    container: {
+        position: 'relative',
+        width: '20',
+        height: '20',
+        padding: '4',
+        fontSize: '20',
+    },
+  container2: {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
