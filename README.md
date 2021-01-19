@@ -48,3 +48,8 @@ Usage
   wpm={400}
   playing
 />
+
+#####
+clone repo
+cd repo
+expo start
