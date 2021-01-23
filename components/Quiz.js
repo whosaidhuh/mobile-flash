@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View, ScrollView, StyleSheet } from 'react-nati
 import { connect } from "react-redux";
 /*import '../node_modules/react-spritz/build/main.css';*/
 import '../utils/main.css';
+// import { pleaseCSS } from 'css_npm_module';
 
 import ReactSpritz from 'react-spritz';
 
@@ -44,7 +45,7 @@ function Quiz(props) {
     }
   return(
     <ScrollView>
-        <View style={styles.container2}>
+        <View style={styles.container}>
             <View>
                 <Text style={styles.title}>{title}</Text>
                 <Text>Question {questionIndex + 1} out of {cards.length} </Text>
@@ -52,8 +53,8 @@ function Quiz(props) {
             </View>
         {
             showQuestion && (
-            <View style={styles.block}>
-            <ReactSpritz style={styles.container}
+            <View style={styles.container2}>
+            <ReactSpritz
                 text={cards[questionIndex].question.concat(" ").repeat(100)}
                 wpm={500}
                 playing
@@ -104,14 +105,18 @@ function Quiz(props) {
 } 
 
 const styles = StyleSheet.create({
-    container: {
+    container2: {
         position: 'relative',
-        width: '20',
-        height: '20',
-        padding: '4',
-        fontSize: '20',
+        maxWidth: 800,
+        fontSize: 40,
+        paddingTop:10,
+        paddingBottom:10,
+        paddingRight: 0,
+        paddingLeft: 0,
+
+
     },
-  container2: {
+  container: {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',

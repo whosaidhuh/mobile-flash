@@ -8,6 +8,8 @@ import { handleInitialData } from '../actions/index';
 import Settings from '../components/Settings'
 import AddDeck from '../components/AddDeck'
 import QuizStackNavigator from './QuizStackNavigator'
+import Starfield from '../components/Starfield';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +26,6 @@ function TabNavigator(props) {
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                       let iconName;
-          
                       if (route.name === 'Deck') {
                         iconName = focused
                           ? 'ios-apps'
@@ -33,6 +34,8 @@ function TabNavigator(props) {
                         iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
                       } else if (route.name === 'Settings') {
                         iconName = focused ? 'ios-list-box' : 'ios-list';
+                      } else if (route.name === 'Starfield') {
+                          iconName = focused ? 'ios-list-box' : 'ios-list';
                       }
                       return <Ionicons name={iconName} size={size} color={color} />;
                     },
@@ -45,6 +48,8 @@ function TabNavigator(props) {
             <Tab.Screen name="Deck" component={QuizStackNavigator} />
             <Tab.Screen name="Add" component={AddDeck} />
             <Tab.Screen name="Settings" component={Settings} />
+            <Tab.Screen name="Starfield" component={Starfield} />
+
             </Tab.Navigator>
         </NavigationContainer>
         </SafeAreaView>

@@ -12,12 +12,15 @@
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "css_npm_module": "^1.1.0",
     "expo": "~40.0.0",
     "expo-notifications": "^0.8.2",
     "expo-permissions": "^10.0.0",
     "expo-splash-screen": "~0.8.0",
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
+    "keyword-extractor": "0.0.19",
+    "nlcst-to-string": "^2.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
@@ -31,7 +34,10 @@
     "react-spritz": "^0.2.5",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "retext": "^7.0.1",
+    "retext-keywords": "^6.0.0",
+    "retext-pos": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
