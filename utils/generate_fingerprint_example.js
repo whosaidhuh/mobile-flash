@@ -8,7 +8,7 @@ function removeDuplicates(array) {
     return array.filter((a, b) => array.indexOf(a) === b)
 };
 
-function getKeywordPhrases(c) {
+function getKeywordPhrases(definition) {
     console.log("Keyphrasewords Topic Extraction Using Keyword_Extractor + Retext-Keywords")
     var _keywords = new Array();
     var _keyphrases = new Array();
@@ -114,6 +114,9 @@ var definition = ['A statistical way of comparing two (or more) techniques, ' +
                      all of the inputs from the previous layer and then generates 
                      and passes an output value (typically nonlinear) to the next layer.`][0]
 
+keyphrasewords = getKeywordPhrases(definition)
 fingerprint = definition2fingerprint(definition)
 console.log(fingerprint)
+console.log(keyphrasewords)
+
 
